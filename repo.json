@@ -1,0 +1,10 @@
+
+{
+    "name": "faanJD Repo",
+    "iconUrl": "https://raw.githubusercontent.com/fjdogar/fjd-cs-repo/refs/heads/main/diary.png",
+    "description": "Furqan Dogar Repository Collection",
+    "manifestVersion": 1,
+    "pluginLists": [
+      "https://raw.githubusercontent.com/fjdogar/fjd-cs-repo/refs/heads/main/plugins.json"
+    ]
+}
