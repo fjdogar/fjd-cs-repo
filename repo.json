@@ -1,0 +1,10 @@
+
+{
+    "name": "faanJD Repo",
+    "iconUrl": "https://fjd.gamer.gd/diary.png",
+    "description": "Furqan Dogar Repository Collection",
+    "manifestVersion": 1,
+    "pluginLists": [
+      "https://fjd.gamer.gd/plugins.php"
+    ]
+}
