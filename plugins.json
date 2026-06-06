@@ -1,28 +1,6 @@
 
 [
-    {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
-        "status": 1,
-        "version": 5,
-        "name": "ShowBox",
-        "internalName": "ShowBox",
-        "authors": [
-            "Phisher98"
-        ],
-        "description": "ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.",
-        "fileSize": 114648,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "en",
-        "tvTypes": [
-            "AsianDrama",
-            "Anime",
-            "TvSeries",
-            "Movie"
-        ],
-        "iconUrl": "https://miro.medium.com/v2/1*DyU8bmnyyEiJbFROEXO2VA.png",
-        "apiVersion": 1,
-        "fileHash": "sha256-090be031a1c9380d6b04ff4ed3778d23b4185d149439c634cb89bbca2f429527"
-    },
+    
 
     {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
