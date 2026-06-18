@@ -118,48 +118,6 @@
         "fileHash": "sha256-8e8fd8730e2ea57e4cfec928605cf46fd19849013cfb7ee5200225bbe5ea1c26"
     },
     {
-        "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/MovieBoxProvider/icon.png",
-        "fileHash": "sha256-c9d7aa6dac9a68b5ab088c463d5a52d546617e6542fca08d3aa27b5aa3da487d",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 75516,
-        "status": 1,
-        "language": "ta",
-        "authors": [
-            "NivinCNC"
-        ],
-        "tvTypes": [
-            "Movie",
-            "TvSeries"
-        ],
-        "version": 15,
-        "internalName": "MovieBox-CNC",
-        "description": "Multi Language Movies and Series Provider",
-        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieBoxProvider.cs3",
-        "name": "MovieBoxProvider"
-    },
-    {
-        "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/MovieBoxProviderIN/icon.png",
-        "fileHash": "sha256-e8f762537dc3587245e7cdb44c37ea03be421cde7c4e2d586cb77d787d27eb9e",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension",
-        "fileSize": 73163,
-        "status": 1,
-        "language": "ta",
-        "authors": [
-            "NivinCNC"
-        ],
-        "tvTypes": [
-            "Movie",
-            "TvSeries"
-        ],
-        "version": 17,
-        "internalName": "MovieBoxIN-CNC",
-        "description": "Multi Language Movies and Series Provider (Local homepage based on region)",
-        "url": "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/builds/MovieBoxProviderIN.cs3",
-        "name": "MovieBoxProviderIN"
-    },
-    {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
         "status": 1,
         "version": 21,
