@@ -1,9 +1,10 @@
 import json
 import urllib.request
 import os
+from datetime import datetime
 
-# 1. Define the source repositories you want to scan for updates
-SOURCE_REPOS = [
+# 1. Provide the direct, raw URLs to the plugins.json files of the target repositories
+SOURCE_PLUGIN_URLS = [
     "https://raw.githubusercontent.com/Sushan64/NetMirror-Extension/builds/plugins.json",
     "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/plugins.json",
     "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/plugins.json",
@@ -12,77 +13,82 @@ SOURCE_REPOS = [
 
 ]
 
+def log_to_file(message):
+    """Helper function to print to console and append to a permanent log file."""
+    print(message)
+    with open("update_log.txt", "a", encoding="utf-8") as log_file:
+        log_file.write(message + "\n")
+
 def update_existing_plugins():
-    # 2. Read your current plugins.json to see what you have installed
+    # 2. Read your master plugins.json to see what you are currently tracking
     if not os.path.exists("plugins.json"):
-        print("Error: plugins.json not found in the root folder! Please create it with your initial plugins first.")
+        print("[ERROR] Your local master 'plugins.json' was not found in the root directory!")
         return
 
     with open("plugins.json", "r", encoding="utf-8") as f:
         try:
             local_plugins = json.load(f)
         except json.JSONDecodeError:
-            print("Error: Your local plugins.json file contains invalid JSON data.")
+            print("[ERROR] Your local master 'plugins.json' file contains invalid JSON syntax.")
             return
 
     if not isinstance(local_plugins, list) or len(local_plugins) == 0:
-        print("Your local plugins.json is empty. Nothing to update.")
+        print("[INFO] Your master plugins.json is empty. Add at least one plugin block manually first.")
         return
 
-    # Create a map of { "Plugin Name": local_plugin_object } for quick lookup
     plugin_map = {p.get("name"): p for p in local_plugins if p.get("name")}
     target_names = set(plugin_map.keys())
     
-    print(f"Found {len(target_names)} plugins in your local repository to check: {list(target_names)}")
-    print("-" * 50)
+    print(f"[INFO] Tracking {len(target_names)} plugins locally. Checking external sources...")
+    print("-" * 60)
 
-    # 3. Scan the remote repositories for updates
-    updated_count = 0
+    change_logs = []
     
-    for url in SOURCE_REPOS:
+    # 3. Fetch each direct plugins.json URL and look for matches
+    for url in SOURCE_PLUGIN_URLS:
         try:
-            print(f"Scanning remote repo: {url}")
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            
             with urllib.request.urlopen(req) as response:
-                remote_plugins = json.loads(response.read().decode())
+                remote_plugins = json.loads(response.read().decode('utf-8'))
                 
                 if isinstance(remote_plugins, list):
                     for r_plugin in remote_plugins:
                         r_name = r_plugin.get("name")
                         
-                        # If this remote plugin matches one of your local plugins
                         if r_name in target_names:
                             local_plugin = plugin_map[r_name]
+                            old_ver = local_plugin.get("version")
+                            new_ver = r_plugin.get("version")
                             
-                            # Check if the version code has increased or changed
-                            if local_plugin.get("version") != r_plugin.get("version"):
-                                print(f"  -> Update found for '{r_name}': Version {local_plugin.get('version')} -> {r_plugin.get('version')}")
-                                
-                                # Update the metadata entirely (gets new version, url, etc.)
+                            if old_ver != new_ver:
+                                log_msg = f"{r_name} updated from version {old_ver} to {new_ver}"
+                                change_logs.append(log_msg)
                                 plugin_map[r_name] = r_plugin
-                                updated_count += 1
-                            else:
-                                print(f"  -> '{r_name}' is already up to date (Version {local_plugin.get('version')}).")
                 else:
-                    print(f"  -> Skipping URL: Structure is not a valid JSON list.")
-                    
+                    print(f"  -> Skipping URL: Content is not a standard JSON list.")
         except Exception as e:
-            print(f"  -> Error scanning URL: {e}")
+            print(f"  -> Network/Parsing Error for URL {url}: {e}")
     
-    print("-" * 50)
+    print("-" * 60)
 
-    # 4. Save the updated data back to your local plugins.json if changes occurred
-    if updated_count > 0:
-        # Re-compile the map back into an alphabetical list
+    # 4. Generate timestamp and write to the log file
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    log_to_file(f"--- Run executed at {timestamp} ---")
+    
+    if len(change_logs) > 0:
+        for log in change_logs:
+            log_to_file(f"[UPDATED] {log}")
+            
         final_list = list(plugin_map.values())
         final_list.sort(key=lambda x: x.get('name', '').lower())
         
         with open("plugins.json", "w", encoding="utf-8") as f:
             json.dump(final_list, f, indent=4, ensure_ascii=False)
-        print(f"Success! Updated metadata for {updated_count} plugins in your plugins.json.")
+        log_to_file(f"[SUCCESS] Saved fresh metadata records for {len(change_logs)} plugins.\n")
     else:
-        print("All plugins are already tracking the latest versions. No changes written.")
+        log_to_file("[INFO] No plugin is updated. All tracked plugins are already on the latest version.\n")
 
 if __name__ == "__main__":
     update_existing_plugins()
+
