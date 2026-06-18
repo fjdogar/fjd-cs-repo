@@ -4,9 +4,12 @@ import os
 
 # 1. Define the source repositories you want to scan for updates
 SOURCE_REPOS = [
-    "https://raw.githubusercontent.com/username1/repo1/builds/plugins.json",
-    "https://raw.githubusercontent.com/username2/repo2/builds/plugins.json",
-    "https://raw.githubusercontent.com/username3/repo3/builds/plugins.json"
+    "https://raw.githubusercontent.com/Sushan64/NetMirror-Extension/builds/plugins.json",
+    "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/plugins.json",
+    "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/plugins.json",
+
+"https://raw.githubusercontent.com/Reflex755/ReflexRepo/refs/heads/builds/plugins.json"
+
 ]
 
 def update_existing_plugins():
