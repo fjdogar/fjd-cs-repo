@@ -1,55 +1,49 @@
-
 [
     {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
+        "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
         "status": 1,
-        "version": 5,
-        "name": "ShowBox",
-        "internalName": "ShowBox",
+        "version": 452,
+        "name": "CineStream",
+        "internalName": "CineStream",
         "authors": [
-            "Phisher98"
+            "megix"
         ],
-        "description": "ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.",
-        "fileSize": 114648,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
+        "fileSize": 655862,
+        "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
         "language": "en",
         "tvTypes": [
-            "AsianDrama",
-            "Anime",
             "TvSeries",
-            "Movie"
-        ],
-        "iconUrl": "https://miro.medium.com/v2/1*DyU8bmnyyEiJbFROEXO2VA.png",
-        "apiVersion": 1,
-        "fileHash": "sha256-090be031a1c9380d6b04ff4ed3778d23b4185d149439c634cb89bbca2f429527"
-    },
-
-    {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
-        "status": 1,
-        "version": 33,
-        "name": "SuperStream",
-        "internalName": "SuperStream",
-        "authors": [
-            "Phisher98"
-        ],
-        "description": "SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.",
-        "fileSize": 128684,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "en",
-        "tvTypes": [
-            "AsianDrama",
-            "TvSeries",
-            "Anime",
             "Movie",
-            "Cartoon",
-            "AnimeMovie"
+            "AsianDrama",
+            "Anime",
+            "Torrent"
         ],
-        "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.showbox.media/&size=256",
+        "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c7040eebe63464dfa4618d29967474f638b52fa030159b39f57146c1d70372e4"
+        "fileHash": "sha256-b509a8bb51c019e7148ffd02a167a1155bccebc1802bfe45a5cdeb36bd38bf37"
     },
-
+    {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
+        "status": 1,
+        "version": 23,
+        "name": "MovieBoxProvider",
+        "internalName": "MovieBoxProvider",
+        "authors": [
+            "NivinCNC,Phisher98"
+        ],
+        "description": "Multi Language Movies and Series Provider",
+        "fileSize": 57636,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "hi",
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/MovieBoxProvider/icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-dfe4e461f0ea01617f8bbc51b0268cec693eb330af78ade2b5d401302e59526e"
+    },
     {
         "iconUrl": "https://raw.githubusercontent.com/Sushan64/NetMirror-Extension/refs/heads/master/Netmirror/logo.jpeg",
         "fileHash": "sha256-0e52e6f1c6939d9f0fcda91968114eab4908718b9a3a20399304ca4d66853d2b",
@@ -72,119 +66,6 @@
         "name": "Netmirror"
     },
     {
-        "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
-        "status": 1,
-        "version": 435,
-        "name": "CineStream",
-        "internalName": "CineStream",
-        "authors": [
-            "megix"
-        ],
-        "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
-        "fileSize": 628842,
-        "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
-        "tvTypes": [
-            "TvSeries",
-            "Movie",
-            "AsianDrama",
-            "Anime",
-            "Torrent"
-        ],
-        "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
-        "apiVersion": 1,
-        "fileHash": "sha256-d30672ec6a5d42ce30f7fde3b4ef5a7a4a4b59cd5968e0c896f05f8d724924b0"
-    },
-    {
-        "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/VegaMovies.cs3",
-        "status": 1,
-        "version": 79,
-        "name": "VegaMovies",
-        "internalName": "VegaMovies",
-        "authors": [
-            "megix"
-        ],
-        "description": "Includes LuxMovies, Rogmovies",
-        "fileSize": 49804,
-        "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
-        "language": "hi",
-        "tvTypes": [
-            "TvSeries",
-            "Movie",
-            "AsianDrama",
-            "Anime"
-        ],
-        "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/VegaMovies/icon.jpg",
-        "apiVersion": 1,
-        "fileHash": "sha256-8e8fd8730e2ea57e4cfec928605cf46fd19849013cfb7ee5200225bbe5ea1c26"
-    },
-    {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
-        "status": 1,
-        "version": 21,
-        "name": "MovieBoxProvider",
-        "internalName": "MovieBoxProvider",
-        "authors": [
-            "NivinCNC,Phisher98"
-        ],
-        "description": "Multi Language Movies and Series Provider",
-        "fileSize": 68683,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "hi",
-        "tvTypes": [
-            "Movie",
-            "TvSeries"
-        ],
-        "iconUrl": "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/MovieBoxProvider/icon.png",
-        "apiVersion": 1,
-        "fileHash": "sha256-0f84841157aebc37ab245a9a646ae16e018aa9492c3bb57ff6eb77a9931a496a"
-    },
-    {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
-        "status": 1,
-        "version": 637,
-        "name": "StreamPlay",
-        "internalName": "StreamPlay",
-        "authors": [
-            "Phisher98",
-            "Hexated"
-        ],
-        "description": "#1 best extention based on MultiAPI",
-        "fileSize": 923953,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "en",
-        "tvTypes": [
-            "AsianDrama",
-            "TvSeries",
-            "Anime",
-            "Movie",
-            "Cartoon",
-            "AnimeMovie"
-        ],
-        "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
-        "apiVersion": 1,
-        "fileHash": "sha256-1f9b797c5bb7018e741ae3ce369cfe631dfcdc4bee6e91a0b41e7f73489fcf5f"
-    },
-    {
-        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Ultima.cs3",
-        "status": 2,
-        "version": 35,
-        "name": "Ultima",
-        "internalName": "Ultima",
-        "authors": [
-            "RowdyRushya,Phisher98"
-        ],
-        "description": "The ultimate All-in-One home screen to access all of your extensions at one place (You need to select/deselect sections in Ultima's settings to load other extensions on home screen)",
-        "fileSize": 209621,
-        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
-        "language": "en",
-        "tvTypes": [
-            "All"
-        ],
-        "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/Ultima.jpg",
-        "apiVersion": 1,
-        "fileHash": "sha256-62d5190ffb744679e2effe97eac34a2d987cd24ec124f55e1a45d7e27c0702a7"
-    }, 
-    {
         "iconUrl": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/refs/heads/master/Logos/ReflexMirror-icon.png",
         "fileHash": "sha256-60dfaa5f943c7ca97552990a3a6f5b5d66aefac5c63afb8a4da497de3e4f637a",
         "apiVersion": 1,
@@ -204,6 +85,122 @@
         "description": "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages",
         "url": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/builds/ReflexMirror.cs3",
         "name": "ReflexMirror"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
+        "status": 1,
+        "version": 6,
+        "name": "ShowBox",
+        "internalName": "ShowBox",
+        "authors": [
+            "Phisher98"
+        ],
+        "description": "ShowBox (Retrieve the cookie using Login with Google to properly utilize ShowBox.",
+        "fileSize": 114648,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "en",
+        "tvTypes": [
+            "AsianDrama",
+            "Anime",
+            "TvSeries",
+            "Movie"
+        ],
+        "iconUrl": "https://miro.medium.com/v2/1*DyU8bmnyyEiJbFROEXO2VA.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-e7d45b05617c8831e14ff2d52c03fa79735fd4af455670caa17cf7c1bf2c8c28"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
+        "status": 1,
+        "version": 650,
+        "name": "StreamPlay",
+        "internalName": "StreamPlay",
+        "authors": [
+            "Phisher98",
+            "Hexated"
+        ],
+        "description": "#1 best extention based on MultiAPI",
+        "fileSize": 947114,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "en",
+        "tvTypes": [
+            "AsianDrama",
+            "TvSeries",
+            "Anime",
+            "Movie",
+            "Cartoon",
+            "AnimeMovie"
+        ],
+        "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
+        "apiVersion": 1,
+        "fileHash": "sha256-876c5dc00f8cb13a392c2cc3120ecbd697f25e90536e183fce6308878da628d7"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",
+        "status": 1,
+        "version": 34,
+        "name": "SuperStream",
+        "internalName": "SuperStream",
+        "authors": [
+            "Phisher98"
+        ],
+        "description": "SuperStream (Retrieve the cookie using Login with Google to properly utilize SuperStream.",
+        "fileSize": 128683,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "en",
+        "tvTypes": [
+            "AsianDrama",
+            "TvSeries",
+            "Anime",
+            "Movie",
+            "Cartoon",
+            "AnimeMovie"
+        ],
+        "iconUrl": "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.showbox.media/&size=256",
+        "apiVersion": 1,
+        "fileHash": "sha256-1fe596e1842339f10c23a519236d120333a4dff1abeae449ab1be7110cb7a644"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/Ultima.cs3",
+        "status": 2,
+        "version": 53,
+        "name": "Ultima",
+        "internalName": "Ultima",
+        "authors": [
+            "RowdyRushya,Phisher98"
+        ],
+        "description": "The ultimate All-in-One home screen to access all of your extensions at one place (You need to select/deselect sections in Ultima's settings to load other extensions on home screen)",
+        "fileSize": 298192,
+        "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
+        "language": "en",
+        "tvTypes": [
+            "All"
+        ],
+        "iconUrl": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/Icons/Ultima.jpg",
+        "apiVersion": 1,
+        "fileHash": "sha256-15f84fb85e0d4523bf8a30807edb5572cf48f92153e44a6a32389c6abad55fd0"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/VegaMovies.cs3",
+        "status": 1,
+        "version": 80,
+        "name": "VegaMovies",
+        "internalName": "VegaMovies",
+        "authors": [
+            "megix"
+        ],
+        "description": "Includes LuxMovies, Rogmovies",
+        "fileSize": 41094,
+        "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
+        "language": "hi",
+        "tvTypes": [
+            "TvSeries",
+            "Movie",
+            "AsianDrama",
+            "Anime"
+        ],
+        "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/VegaMovies/icon.jpg",
+        "apiVersion": 1,
+        "fileHash": "sha256-fbf7c1fe8092259076879d0b0df390161ea96c0b064ee1d0c4ac188866dbd299"
     }
-    
 ]
