@@ -1,16 +1,15 @@
-name: Auto Update Plugins Repository-
+name: Auto Update Plugins Repository
 
 on:
   schedule:
-    # Runs every 6 hours (adjust using cron syntax if needed)
     - cron: '0 */6 * * *'
-  workflow_dispatch: # Allows you to run this manually anytime from the GitHub "Actions" tab
+  workflow_dispatch:
 
 jobs:
   update-repo:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Grants permission to push changes back to your repository
+      contents: write
 
     steps:
     - name: Checkout Repository
@@ -28,11 +27,9 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        
-        # Check if plugins.json actually changed to avoid empty commits
         if ! git diff --exit-code plugins.json; then
           git add plugins.json
-          git commit -m "Automated Sync: Updated plugin metadata and version codes"
+          git commit -m "Automated Sync: Updated plugin metadata"
           git push
         else
           echo "No changes detected in source plugins."
