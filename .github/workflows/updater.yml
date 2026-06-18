@@ -2,11 +2,11 @@ name: Update Plugins
 
 on:
   schedule:
-    # Runs every 6 hours (at minute 0 of hours 0, 6, 12, and 18)
+    # Runs every 6 hours
     - cron: '0 */6 * * *'
   workflow_dispatch: # Allows you to run this manually from the Actions tab
 
-# CRITICAL: Give the action permission to write changes back to your repository
+# CRITICAL: Gives the runner permission to push the file changes back to your repository
 permissions:
   contents: write
 
@@ -15,26 +15,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # UPDATED: Using @v6 to fix the Node.js warning
+    # 1. FIXED: Node 24 compliant
     - name: Checkout repository
       uses: actions/checkout@v6
 
-    # UPDATED: Using @v6 to fix the Node.js warning
+    # 2. FIXED: Node 24 compliant
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.x'
 
+    # Installs dependencies if you have them
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    # Runs your script that updates the plugins file locally on the runner
+    # Runs your script to update the data locally on the runner
     - name: Run update script
       run: python update_repo.py
 
-    # NEW STEP: This commits and pushes the updated file back to GitHub automatically
+    # 3. FIXED & UPGRADED: Using v7 for Node 24 + target file targeting
     - name: Commit and push updated plugins file
-      uses: stefanzweifel/git-auto-commit-action@v5
+      uses: stefanzweifel/git-auto-commit-action@v7
       with:
         commit_message: "chore: auto-update plugins file"
+        # Forces git to look directly at plugins.json so it doesn't ignore it
+        file_pattern: 'plugins.json'
