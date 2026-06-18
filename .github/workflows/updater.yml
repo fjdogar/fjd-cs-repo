@@ -1,36 +1,40 @@
-name: Auto Update Plugins Repository
+name: Update Plugins
 
 on:
   schedule:
+    # Runs every 6 hours (at minute 0 of hours 0, 6, 12, and 18)
     - cron: '0 */6 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Allows you to run this manually from the Actions tab
+
+# CRITICAL: Give the action permission to write changes back to your repository
+permissions:
+  contents: write
 
 jobs:
-  update-repo:
+  update-plugins:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+    # UPDATED: Using @v6 to fix the Node.js warning
+    - name: Checkout repository
+      uses: actions/checkout@v6
 
+    # UPDATED: Using @v6 to fix the Node.js warning
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
-    - name: Run Update Script
+    - name: Install dependencies
+      run: |
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    # Runs your script that updates the plugins file locally on the runner
+    - name: Run update script
       run: python update_repo.py
 
-    - name: Commit and Push changes
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        if ! git diff --exit-code plugins.json; then
-          git add plugins.json
-          git commit -m "Automated Sync: Updated plugin metadata"
-          git push
-        else
-          echo "No changes detected in source plugins."
-        fi
+    # NEW STEP: This commits and pushes the updated file back to GitHub automatically
+    - name: Commit and push updated plugins file
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "chore: auto-update plugins file"
