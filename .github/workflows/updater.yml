@@ -1,4 +1,4 @@
-name: Auto Update Plugins Repository
+name: Auto Update Plugins Repository-
 
 on:
   schedule:
