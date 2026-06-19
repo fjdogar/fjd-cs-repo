@@ -38,17 +38,17 @@ def update_existing_plugins():
 
     change_logs = []
     found_plugins = set()
-    successfully_fetched_sources = 0  # <--- SAFETY FUSE
+    successfully_fetched_sources = 0  # <--- SAFETY TRACKER
     
     for url in SOURCE_PLUGIN_URLS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            # Added a 15-second timeout so a dead link won't hang your GitHub Action run
+            # Added a 15-second timeout so a dead link won't hang your GitHub Actions run
             with urllib.request.urlopen(req, timeout=15) as response:
                 remote_plugins = json.loads(response.read().decode('utf-8'))
                 
                 if isinstance(remote_plugins, list):
-                    successfully_fetched_sources += 1  # Successfully read a source
+                    successfully_fetched_sources += 1  # Successfully connected and downloaded
                     for r_plugin in remote_plugins:
                         r_name = r_plugin.get("name")
                         
@@ -63,7 +63,7 @@ def update_existing_plugins():
                             if local_check != remote_check:
                                 old_ver = local_plugin.get("version", 1)
                                 
-                                # Process version checks safely
+                                # Process version checking safely
                                 if r_plugin.get("version") != old_ver:
                                     new_ver = r_plugin.get("version")
                                 else:
@@ -84,7 +84,7 @@ def update_existing_plugins():
     
     print("-" * 60)
 
-    # SAFETY CHECK: Only delete missing items if we successfully reached external repos
+    # SAFETY CHECK: Only delete items if we successfully connected to external repositories
     if successfully_fetched_sources > 0:
         missing_plugins = target_names - found_plugins
         if missing_plugins:
@@ -93,7 +93,7 @@ def update_existing_plugins():
                 change_logs.append(log_msg)
                 del plugin_map[missing]
     else:
-        log_to_file("[WARNING] All external fetches failed. Skipping deletion check to protect your data.")
+        log_to_file("[WARNING] All external fetches failed. Skipping deletion check to protect your local data.")
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_to_file(f"--- Run executed at {timestamp} ---")
