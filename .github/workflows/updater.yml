@@ -1,10 +1,6 @@
 name: Update Plugins
 
 on:
-  schedule:
-    # Runs exactly every 3 hours and 45 minutes, offset to avoid the 00 minute mark
-    - cron: '20 0,3,7,11,15,18 * * *'
-
   workflow_dispatch: # Allows you to run this manually from the Actions tab
 
 # CRITICAL: Gives the runner permission to push the file changes back to your repository
