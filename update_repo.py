@@ -8,9 +8,7 @@ SOURCE_PLUGIN_URLS = [
     "https://raw.githubusercontent.com/Sushan64/NetMirror-Extension/builds/plugins.json",
     "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/plugins.json",
     "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/plugins.json",
-
-"https://raw.githubusercontent.com/Reflex755/ReflexRepo/refs/heads/builds/plugins.json"
-
+    "https://raw.githubusercontent.com/Reflex755/ReflexRepo/refs/heads/builds/plugins.json"
 ]
 
 def log_to_file(message):
@@ -21,14 +19,14 @@ def log_to_file(message):
 
 def update_existing_plugins():
     if not os.path.exists("plugins.json"):
-        print("[ERROR] Your local master 'plugins.json' was not found!")
+        log_to_file("[ERROR] Your local master 'plugins.json' was not found!")
         return
 
     with open("plugins.json", "r", encoding="utf-8") as f:
         try:
             local_plugins = json.load(f)
         except json.JSONDecodeError:
-            print("[ERROR] Your local master 'plugins.json' contains invalid JSON syntax.")
+            log_to_file("[ERROR] Your local master 'plugins.json' contains invalid JSON syntax.")
             return
 
     # Map your current tracked plugins
@@ -39,34 +37,32 @@ def update_existing_plugins():
     print("-" * 60)
 
     change_logs = []
-    # NEW: Keep track of which local plugins we actually find across ALL remote sources
     found_plugins = set()
+    successfully_fetched_sources = 0
     
     for url in SOURCE_PLUGIN_URLS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req) as response:
+            with urllib.request.urlopen(req, timeout=15) as response:
                 remote_plugins = json.loads(response.read().decode('utf-8'))
                 
                 if isinstance(remote_plugins, list):
+                    successfully_fetched_sources += 1
                     for r_plugin in remote_plugins:
                         r_name = r_plugin.get("name")
                         
                         if r_name in target_names:
-                            # Mark this plugin as found so it doesn't get deleted
                             found_plugins.add(r_name)
-                            
                             local_plugin = plugin_map[r_name]
                             
                             # Compare data without looking at the version field
                             local_check = {k: v for k, v in local_plugin.items() if k != "version"}
                             remote_check = {k: v for k, v in r_plugin.items() if k != "version"}
                             
-                            # If data has changed
                             if local_check != remote_check:
                                 old_ver = local_plugin.get("version", 1)
                                 
-                                # Use remote version if increased, otherwise force-bump
+                                # Process version checking
                                 if r_plugin.get("version") != old_ver:
                                     new_ver = r_plugin.get("version")
                                 else:
@@ -87,21 +83,20 @@ def update_existing_plugins():
     
     print("-" * 60)
 
-    # NEW LOGIC: Identify which tracked plugins were completely missing from all sources
-    missing_plugins = target_names - found_plugins
-    
-    # Process deletions if any missing plugins are detected
-    if missing_plugins:
-        for missing in missing_plugins:
-            log_msg = f"DELETED: {missing} was removed from remote repositories. Dropping locally."
-            change_logs.append(log_msg)
-            # Remove from our runtime map so it won't be saved back to plugins.json
-            del plugin_map[missing]
+    # SAFETY CHECK: Only delete plugins if we successfully reached external repos
+    if successfully_fetched_sources > 0:
+        missing_plugins = target_names - found_plugins
+        if missing_plugins:
+            for missing in missing_plugins:
+                log_msg = f"DELETED: {missing} was removed from remote repositories. Dropping locally."
+                change_logs.append(log_msg)
+                del plugin_map[missing]
+    else:
+        log_to_file("[WARNING] All external fetches failed. Skipping deletion check to prevent wiping your data.")
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_to_file(f"--- Run executed at {timestamp} ---")
     
-    # Save changes if there were updates OR deletions
     if len(change_logs) > 0:
         for log in change_logs:
             log_to_file(f"[CHANGELOG] {log}")
