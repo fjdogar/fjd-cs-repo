@@ -1,4 +1,4 @@
-name: Update Plugins
+name: Update Plugins v0.2
 
 on:
   schedule:
