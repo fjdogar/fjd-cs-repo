@@ -65,7 +65,7 @@ def update_existing_plugins():
                                 
                                 # Overwrite with the remote values completely
                                 local_plugin["version"] = remote_version
-                                local_plugin["filesize"] = r_plugin.get("filesize", 0)
+                                local_plugin["fileSize"] = r_plugin.get("fileSize", 0)
                                 local_plugin["fileHash"] = r_plugin.get("fileHash", "")
                                 
                                 # Sync URL as well if it changed
