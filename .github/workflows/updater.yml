@@ -21,20 +21,15 @@ jobs:
       with:
         python-version: '3.x'
 
-     Tar-checking:
     - name: Install dependencies
-      run: |
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      run: if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Bi-Monthly Log Reset
       run: |
-        current_month=$(date +%m)
-        current_day=$(date +%d)
-        if [ "$current_day" = "01" ] && [ $((10#$current_month % 2)) -eq 0 ]; then
+        if [ "$(date +%d)" = "01" ] && [ $((10#$(date +%m) % 2)) -eq 0 ]; then
           echo "--- Log Rotated on $(date) ---" > update_log.txt
-          echo "[INFO] Bi-monthly schedule triggered. Log file cleared."
         else
-          echo "[INFO] Skipping log reset. Condition not met."
+          echo "Skipping log reset."
         fi
 
     - name: Run Plugin Sync Script
