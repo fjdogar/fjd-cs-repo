@@ -1,4 +1,4 @@
-name: Update Plugins v0.3
+name: Update Plugins Test
 
 on:
   schedule:
@@ -13,9 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # UPGRADED: v6 runs natively on Node 24
     - name: Checkout repository
       uses: actions/checkout@v6
 
+    # UPGRADED: v6 runs natively on Node 24
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
@@ -38,8 +40,17 @@ jobs:
     - name: Run update script
       run: python update_repo.py
 
-    - name: Commit and push updated plugins file
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: "chore: auto-update plugins file and logs"
-        file_pattern: 'plugins.json update_log.txt'
+    # Native Git commands bypass the Node runtime entirely
+    - name: Commit and push updated files
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+        git add plugins.json update_log.txt
+        
+        if ! git diff --cached --quiet; then
+          git commit -m "chore: auto-update plugins file and logs"
+          git push
+        else
+          echo "No changes detected in plugins or logs. Skipping commit."
+        fi
