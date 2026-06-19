@@ -43,7 +43,6 @@ def update_existing_plugins():
     for url in SOURCE_PLUGIN_URLS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            # Added a 15-second timeout so a dead link won't hang your GitHub Actions run
             with urllib.request.urlopen(req, timeout=15) as response:
                 remote_plugins = json.loads(response.read().decode('utf-8'))
                 
@@ -56,27 +55,24 @@ def update_existing_plugins():
                             found_plugins.add(r_name)
                             local_plugin = plugin_map[r_name]
                             
-                            # Compare data without looking at the version field
-                            local_check = {k: v for k, v in local_plugin.items() if k != "version"}
-                            remote_check = {k: v for k, v in r_plugin.items() if k != "version"}
+                            local_version = local_plugin.get("version")
+                            remote_version = r_plugin.get("version")
                             
-                            if local_check != remote_check:
-                                old_ver = local_plugin.get("version", 1)
-                                
-                                # Process version checking safely
-                                if r_plugin.get("version") != old_ver:
-                                    new_ver = r_plugin.get("version")
-                                else:
-                                    try:
-                                        new_ver = int(old_ver) + 1
-                                    except ValueError:
-                                        new_ver = str(old_ver) + ".1"
-                                
-                                log_msg = f"{r_name} data changed. Updating version from {old_ver} to {new_ver}"
+                            # --- ONLY CHECK VERSION BUMP ---
+                            if local_version != remote_version:
+                                log_msg = f"{r_name} version changed from {local_version} to {remote_version}. Syncing metadata."
                                 change_logs.append(log_msg)
                                 
-                                r_plugin["version"] = new_ver
-                                plugin_map[r_name] = r_plugin
+                                # Overwrite with the remote values completely
+                                local_plugin["version"] = remote_version
+                                local_plugin["filesize"] = r_plugin.get("filesize", 0)
+                                local_plugin["fileHash"] = r_plugin.get("fileHash", "")
+                                
+                                # Sync URL as well if it changed
+                                if "url" in r_plugin:
+                                    local_plugin["url"] = r_plugin["url"]
+                                    
+                                plugin_map[r_name] = local_plugin
                 else:
                     print(f"  -> Skipping URL: Content is not a standard JSON list.")
         except Exception as e:
@@ -109,7 +105,7 @@ def update_existing_plugins():
             json.dump(final_list, f, indent=4, ensure_ascii=False)
         log_to_file(f"[SUCCESS] Sync complete. Applied modifications to {len(change_logs)} items.\n")
     else:
-        log_to_file("[INFO] No plugin data changes or removals detected. Everything is clean.\n")
+        log_to_file("[INFO] No plugin version upgrades detected. Everything is up to date.\n")
 
 if __name__ == "__main__":
     update_existing_plugins()
