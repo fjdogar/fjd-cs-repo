@@ -1,13 +1,10 @@
-name: Update Plugins
+name: Update Plugins v0.3
 
 on:
   schedule:
-    # Runs exactly every 3 hours and 45 minutes, offset to avoid the 00 minute mark
     - cron: "*/5 * * * *"
+  workflow_dispatch:
 
-  workflow_dispatch: # Allows you to run this manually from the Actions tab
-
-# CRITICAL: Gives the runner permission to push the file changes back to your repository
 permissions:
   contents: write
 
@@ -16,43 +13,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. FIXED: Node 24 compliant
     - name: Checkout repository
       uses: actions/checkout@v6
 
-    # 2. FIXED: Node 24 compliant
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
         python-version: '3.x'
 
-    # Installs dependencies if you have them
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    # NEW STEP: Clears the log file if today is the 1st day of an EVEN month (every 2 months)
     - name: Bi-Monthly Log Reset
       run: |
         CURRENT_DAY=$(date +%d)
         CURRENT_MONTH=$(date +%m)
-        
-        # Check if today is the 1st AND if the month number is divisible by 2 (even month)
         if [ "$CURRENT_DAY" = "01" ] && [ $((10#$CURRENT_MONTH % 2)) -eq 0 ]; then
-          echo "It's the first of an even month ($CURRENT_MONTH)! Resetting update_log.txt..."
-          echo "--- Log automatically reset for the new 2-month cycle ---" > update_log.txt
+          echo "--- Log automatically reset ---" > update_log.txt
         else
-          echo "Day: $CURRENT_DAY, Month: $CURRENT_MONTH. Conditions for 2-month reset not met. Appending logs normally."
+          echo "Conditions for reset not met."
         fi
 
-    # Runs your script to update the data locally on the runner
     - name: Run update script
       run: python update_repo.py
 
-    # 3. FIXED & UPGRADED: Using v7 for Node 24 + target file targeting
     - name: Commit and push updated plugins file
-      uses: stefanzweifel/git-auto-commit-action@v7
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "chore: auto-update plugins file and logs"
-        # Forces git to look directly at these files so it doesn't ignore them
         file_pattern: 'plugins.json update_log.txt'
