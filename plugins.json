@@ -2,7 +2,7 @@
     {
         "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
         "status": 1,
-        "version": 453,
+        "version": 452,
         "name": "CineStream",
         "internalName": "CineStream",
         "authors": [
@@ -21,8 +21,7 @@
         ],
         "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-36d82c9a36bc71e54bfe1ca1d456b26d2f360194766e5ff2cb8d98703aec38e1",
-        "filesize": 0
+        "fileHash": "sha256-b509a8bb51c019e7148ffd02a167a1155bccebc1802bfe45a5cdeb36bd38bf37"
     },
     {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
