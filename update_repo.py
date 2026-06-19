@@ -20,22 +20,18 @@ def log_to_file(message):
         log_file.write(message + "\n")
 
 def update_existing_plugins():
-    # 2. Read your master plugins.json to see what you are currently tracking
     if not os.path.exists("plugins.json"):
-        print("[ERROR] Your local master 'plugins.json' was not found in the root directory!")
+        print("[ERROR] Your local master 'plugins.json' was not found!")
         return
 
     with open("plugins.json", "r", encoding="utf-8") as f:
         try:
             local_plugins = json.load(f)
         except json.JSONDecodeError:
-            print("[ERROR] Your local master 'plugins.json' file contains invalid JSON syntax.")
+            print("[ERROR] Your local master 'plugins.json' contains invalid JSON syntax.")
             return
 
-    if not isinstance(local_plugins, list) or len(local_plugins) == 0:
-        print("[INFO] Your master plugins.json is empty. Add at least one plugin block manually first.")
-        return
-
+    # Map your current tracked plugins
     plugin_map = {p.get("name"): p for p in local_plugins if p.get("name")}
     target_names = set(plugin_map.keys())
     
@@ -43,8 +39,9 @@ def update_existing_plugins():
     print("-" * 60)
 
     change_logs = []
+    # NEW: Keep track of which local plugins we actually find across ALL remote sources
+    found_plugins = set()
     
-    # 3. Fetch each direct plugins.json URL and look for matches
     for url in SOURCE_PLUGIN_URLS:
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -56,13 +53,32 @@ def update_existing_plugins():
                         r_name = r_plugin.get("name")
                         
                         if r_name in target_names:
-                            local_plugin = plugin_map[r_name]
-                            old_ver = local_plugin.get("version")
-                            new_ver = r_plugin.get("version")
+                            # Mark this plugin as found so it doesn't get deleted
+                            found_plugins.add(r_name)
                             
-                            if old_ver != new_ver:
-                                log_msg = f"{r_name} updated from version {old_ver} to {new_ver}"
+                            local_plugin = plugin_map[r_name]
+                            
+                            # Compare data without looking at the version field
+                            local_check = {k: v for k, v in local_plugin.items() if k != "version"}
+                            remote_check = {k: v for k, v in r_plugin.items() if k != "version"}
+                            
+                            # If data has changed
+                            if local_check != remote_check:
+                                old_ver = local_plugin.get("version", 1)
+                                
+                                # Use remote version if increased, otherwise force-bump
+                                if r_plugin.get("version") != old_ver:
+                                    new_ver = r_plugin.get("version")
+                                else:
+                                    try:
+                                        new_ver = int(old_ver) + 1
+                                    except ValueError:
+                                        new_ver = str(old_ver) + ".1"
+                                
+                                log_msg = f"{r_name} data changed. Updating version from {old_ver} to {new_ver}"
                                 change_logs.append(log_msg)
+                                
+                                r_plugin["version"] = new_ver
                                 plugin_map[r_name] = r_plugin
                 else:
                     print(f"  -> Skipping URL: Content is not a standard JSON list.")
@@ -71,24 +87,33 @@ def update_existing_plugins():
     
     print("-" * 60)
 
-    # 4. Generate timestamp and write to the log file
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # NEW LOGIC: Identify which tracked plugins were completely missing from all sources
+    missing_plugins = target_names - found_plugins
     
+    # Process deletions if any missing plugins are detected
+    if missing_plugins:
+        for missing in missing_plugins:
+            log_msg = f"DELETED: {missing} was removed from remote repositories. Dropping locally."
+            change_logs.append(log_msg)
+            # Remove from our runtime map so it won't be saved back to plugins.json
+            del plugin_map[missing]
+
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_to_file(f"--- Run executed at {timestamp} ---")
     
+    # Save changes if there were updates OR deletions
     if len(change_logs) > 0:
         for log in change_logs:
-            log_to_file(f"[UPDATED] {log}")
+            log_to_file(f"[CHANGELOG] {log}")
             
         final_list = list(plugin_map.values())
         final_list.sort(key=lambda x: x.get('name', '').lower())
         
         with open("plugins.json", "w", encoding="utf-8") as f:
             json.dump(final_list, f, indent=4, ensure_ascii=False)
-        log_to_file(f"[SUCCESS] Saved fresh metadata records for {len(change_logs)} plugins.\n")
+        log_to_file(f"[SUCCESS] Sync complete. Applied modifications to {len(change_logs)} items.\n")
     else:
-        log_to_file("[INFO] No plugin is updated. All tracked plugins are already on the latest version.\n")
+        log_to_file("[INFO] No plugin data changes or removals detected. Everything is clean.\n")
 
 if __name__ == "__main__":
     update_existing_plugins()
-
