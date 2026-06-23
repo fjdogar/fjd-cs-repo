@@ -2,14 +2,14 @@
     {
         "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
         "status": 1,
-        "version": 453,
+        "version": 454,
         "name": "CineStream",
         "internalName": "CineStream",
         "authors": [
             "megix"
         ],
         "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
-        "fileSize": 662202,
+        "fileSize": 665156,
         "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
         "language": "en",
         "tvTypes": [
@@ -21,7 +21,7 @@
         ],
         "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-36d82c9a36bc71e54bfe1ca1d456b26d2f360194766e5ff2cb8d98703aec38e1"
+        "fileHash": "sha256-c1494f7885da5fe6910d61113009771584449311e9666ce55298599126024ed0"
     },
     {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
@@ -183,14 +183,14 @@
     {
         "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/VegaMovies.cs3",
         "status": 1,
-        "version": 80,
+        "version": 81,
         "name": "VegaMovies",
         "internalName": "VegaMovies",
         "authors": [
             "megix"
         ],
         "description": "Includes LuxMovies, Rogmovies",
-        "fileSize": 41094,
+        "fileSize": 41563,
         "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
         "language": "hi",
         "tvTypes": [
@@ -201,6 +201,6 @@
         ],
         "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/VegaMovies/icon.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-fbf7c1fe8092259076879d0b0df390161ea96c0b064ee1d0c4ac188866dbd299"
+        "fileHash": "sha256-f64f07cab3f704e4b1974595bf7ef03b02734b335a80e6dccbe48d34e16e73a2"
     }
 ]

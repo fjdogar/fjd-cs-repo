@@ -21,3 +21,8 @@
 --- Run executed at 2026-06-23 07:01:18 ---
 [INFO] No plugin version upgrades detected. Everything is up to date.
 
+--- Run executed at 2026-06-23 12:17:20 ---
+[CHANGELOG] CineStream version changed from 453 to 454. Syncing metadata.
+[CHANGELOG] VegaMovies version changed from 80 to 81. Syncing metadata.
+[SUCCESS] Sync complete. Applied modifications to 2 items.
+
