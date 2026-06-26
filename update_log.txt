@@ -82,3 +82,7 @@
 [CHANGELOG] MovieBoxProvider version changed from 23 to 25. Syncing metadata.
 [SUCCESS] Sync complete. Applied modifications to 1 items.
 
+--- Run executed at 2026-06-26 17:11:37 ---
+[CHANGELOG] VegaMovies version changed from 81 to 82. Syncing metadata.
+[SUCCESS] Sync complete. Applied modifications to 1 items.
+

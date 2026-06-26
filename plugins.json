@@ -183,14 +183,14 @@
     {
         "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/VegaMovies.cs3",
         "status": 1,
-        "version": 81,
+        "version": 82,
         "name": "VegaMovies",
         "internalName": "VegaMovies",
         "authors": [
             "megix"
         ],
         "description": "Includes LuxMovies, Rogmovies",
-        "fileSize": 41563,
+        "fileSize": 41565,
         "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
         "language": "hi",
         "tvTypes": [
@@ -201,6 +201,6 @@
         ],
         "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/VegaMovies/icon.jpg",
         "apiVersion": 1,
-        "fileHash": "sha256-f64f07cab3f704e4b1974595bf7ef03b02734b335a80e6dccbe48d34e16e73a2"
+        "fileHash": "sha256-b78635ef4f2f66c134184552fe5e4956cc02ec1c5ce6d6811cccfd3747367883"
     }
 ]
