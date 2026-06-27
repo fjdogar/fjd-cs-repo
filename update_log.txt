@@ -92,3 +92,7 @@
 --- Run executed at 2026-06-26 22:38:37 ---
 [INFO] No plugin version upgrades detected. Everything is up to date.
 
+--- Run executed at 2026-06-27 06:40:12 ---
+[CHANGELOG] MovieBoxProvider version changed from 25 to 26. Syncing metadata.
+[SUCCESS] Sync complete. Applied modifications to 1 items.
+
