@@ -207,3 +207,7 @@
 --- Run executed at 2026-07-03 11:42:52 ---
 [INFO] No plugin version upgrades detected. Everything is up to date.
 
+--- Run executed at 2026-07-03 14:34:18 ---
+[CHANGELOG] CineStream version changed from 457 to 458. Syncing metadata.
+[SUCCESS] Sync complete. Applied modifications to 1 items.
+
