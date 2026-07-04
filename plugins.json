@@ -112,7 +112,7 @@
     {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/StreamPlay.cs3",
         "status": 1,
-        "version": 651,
+        "version": 653,
         "name": "StreamPlay",
         "internalName": "StreamPlay",
         "authors": [
@@ -120,7 +120,7 @@
             "Hexated"
         ],
         "description": "#1 best extention based on MultiAPI",
-        "fileSize": 949215,
+        "fileSize": 947139,
         "repositoryUrl": "https://github.com/phisher98/cloudstream-extensions-phisher",
         "language": "en",
         "tvTypes": [
@@ -133,7 +133,7 @@
         ],
         "iconUrl": "https://i3.wp.com/yt3.googleusercontent.com/ytc/AIdro_nCBArSmvOc6o-k2hTYpLtQMPrKqGtAw_nC20rxm70akA=s900-c-k-c0x00ffffff-no-rj?ssl=1",
         "apiVersion": 1,
-        "fileHash": "sha256-0e2e5745a454c977abd1d3b9a34e6af7ffc4d4463057abdd888be606957d42f2"
+        "fileHash": "sha256-447614e5ded6ddbb4e69a9d4fa8de6472c766d6b2b8739d3afdf24d16c8a781b"
     },
     {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/SuperStream.cs3",

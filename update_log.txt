@@ -220,3 +220,7 @@
 --- Run executed at 2026-07-03 22:28:15 ---
 [INFO] No plugin version upgrades detected. Everything is up to date.
 
+--- Run executed at 2026-07-04 06:31:02 ---
+[CHANGELOG] StreamPlay version changed from 651 to 653. Syncing metadata.
+[SUCCESS] Sync complete. Applied modifications to 1 items.
+
