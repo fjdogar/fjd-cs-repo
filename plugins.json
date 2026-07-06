@@ -66,27 +66,6 @@
         "name": "Netmirror"
     },
     {
-        "iconUrl": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/refs/heads/master/Logos/ReflexMirror-icon.png",
-        "fileHash": "sha256-60dfaa5f943c7ca97552990a3a6f5b5d66aefac5c63afb8a4da497de3e4f637a",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Reflex755/ReflexRepo",
-        "fileSize": 63484,
-        "status": 1,
-        "language": "en",
-        "authors": [
-            "Reflex1337, NivinCNC"
-        ],
-        "tvTypes": [
-            "Movie",
-            "TvSeries"
-        ],
-        "version": 1,
-        "internalName": "ReflexMirror",
-        "description": "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages",
-        "url": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/builds/ReflexMirror.cs3",
-        "name": "ReflexMirror"
-    },
-    {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/ShowBox.cs3",
         "status": 1,
         "version": 6,
