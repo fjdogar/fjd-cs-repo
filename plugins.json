@@ -2,14 +2,14 @@
     {
         "url": "https://raw.githubusercontent.com/SaurabhKaperwan/CSX/builds/CineStream.cs3",
         "status": 1,
-        "version": 460,
+        "version": 461,
         "name": "CineStream",
         "internalName": "CineStream",
         "authors": [
             "megix"
         ],
         "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
-        "fileSize": 666168,
+        "fileSize": 680728,
         "repositoryUrl": "https://github.com/SaurabhKaperwan/CSX",
         "language": "en",
         "tvTypes": [
@@ -21,7 +21,7 @@
         ],
         "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
         "apiVersion": 1,
-        "fileHash": "sha256-c12761e3bdca305b8d0dba95ff33634eb7084c5b10178e7265ba1b8f5c63558a"
+        "fileHash": "sha256-efc570c039d32162e46b812976fac87d1a96e0c2e8e78cf42a1ccb11f8e31049"
     },
     {
         "url": "https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/builds/MovieBoxProvider.cs3",
