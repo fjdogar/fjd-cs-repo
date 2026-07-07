@@ -203,26 +203,5 @@
         "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/VegaMovies/icon.jpg",
         "apiVersion": 1,
         "fileHash": "sha256-b78635ef4f2f66c134184552fe5e4956cc02ec1c5ce6d6811cccfd3747367883"
-    },
-    {
-        "iconUrl": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/refs/heads/master/Logos/ReflexMirror-icon.png",
-        "fileHash": "sha256-60dfaa5f943c7ca97552990a3a6f5b5d66aefac5c63afb8a4da497de3e4f637a",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/Reflex755/ReflexRepo",
-        "fileSize": 63484,
-        "status": 1,
-        "language": "en",
-        "authors": [
-            "Reflex1337, NivinCNC"
-        ],
-        "tvTypes": [
-            "Movie",
-            "TvSeries"
-        ],
-        "version": 1,
-        "internalName": "ReflexMirror",
-        "description": "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages",
-        "url": "https://raw.githubusercontent.com/Reflex755/ReflexRepo/builds/ReflexMirror.cs3",
-        "name": "ReflexMirror"
     }
 ]
