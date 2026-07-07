@@ -59,7 +59,7 @@
             "Movie",
             "TvSeries"
         ],
-        "version": 43,
+        "version": 42,
         "internalName": "Netmirror",
         "description": "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages",
         "url": "https://raw.githubusercontent.com/Sushan64/NetMirror-Extension/builds/Netmirror.cs3",
