@@ -55,6 +55,15 @@ def update_existing_plugins():
                             found_plugins.add(r_name)
                             local_plugin = plugin_map[r_name]
                             
+                            # --- RECOVERY CHECK ---
+                            if local_plugin.get("_fjd_status") == 0:
+                                remote_status = r_plugin.get("status", 1)
+                                log_msg = f"RECOVERED: {r_name} is back online. Restoring status to {remote_status}."
+                                change_logs.append(log_msg)
+                                local_plugin.pop("_fjd_status", None)
+                                local_plugin["status"] = remote_status
+                                plugin_map[r_name] = local_plugin
+
                             local_version = local_plugin.get("version")
                             remote_version = r_plugin.get("version")
                             
@@ -85,9 +94,12 @@ def update_existing_plugins():
         missing_plugins = target_names - found_plugins
         if missing_plugins:
             for missing in missing_plugins:
-                log_msg = f"DELETED: {missing} was removed from remote repositories. Dropping locally."
-                change_logs.append(log_msg)
-                del plugin_map[missing]
+                # Prevent logging multiple times if it was already marked missing previously
+                if plugin_map[missing].get("_fjd_status") != 0:
+                    log_msg = f"MARKED MISSING: {missing} was removed from remote repositories. Setting status to 3 and adding _fjd_status: 0."
+                    change_logs.append(log_msg)
+                    plugin_map[missing]["_fjd_status"] = 0
+                    plugin_map[missing]["status"] = 3
     else:
         log_to_file("[WARNING] All external fetches failed. Skipping deletion check to protect your local data.")
 
