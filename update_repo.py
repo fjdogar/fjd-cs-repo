@@ -62,26 +62,34 @@ def update_existing_plugins():
                                 change_logs.append(log_msg)
                                 local_plugin.pop("_fjd_status", None)
                                 local_plugin["status"] = remote_status
-                                plugin_map[r_name] = local_plugin
 
                             local_version = local_plugin.get("version")
                             remote_version = r_plugin.get("version")
+                            local_size = local_plugin.get("fileSize")
+                            remote_size = r_plugin.get("fileSize", 0)
+                            local_hash = local_plugin.get("fileHash")
+                            remote_hash = r_plugin.get("fileHash", "")
+                            local_url = local_plugin.get("url")
+                            remote_url = r_plugin.get("url", "")
+
+                            # Track changes for logging purposes
+                            has_changed = (local_version != remote_version or 
+                                           local_size != remote_size or 
+                                           local_hash != remote_hash or 
+                                           (remote_url and local_url != remote_url))
                             
-                            # --- ONLY CHECK VERSION BUMP ---
-                            if local_version != remote_version:
-                                log_msg = f"{r_name} version changed from {local_version} to {remote_version}. Syncing metadata."
+                            if has_changed:
+                                log_msg = f"UPDATED: {r_name} metadata sync. version({local_version} -> {remote_version}), size({local_size} -> {remote_size}), hash({local_hash} -> {remote_hash})"
                                 change_logs.append(log_msg)
+                            
+                            # Overwrite values unconditionally
+                            local_plugin["version"] = remote_version
+                            local_plugin["fileSize"] = remote_size
+                            local_plugin["fileHash"] = remote_hash
+                            if remote_url:
+                                local_plugin["url"] = remote_url
                                 
-                                # Overwrite with the remote values completely
-                                local_plugin["version"] = remote_version
-                                local_plugin["fileSize"] = r_plugin.get("fileSize", 0)
-                                local_plugin["fileHash"] = r_plugin.get("fileHash", "")
-                                
-                                # Sync URL as well if it changed
-                                if "url" in r_plugin:
-                                    local_plugin["url"] = r_plugin["url"]
-                                    
-                                plugin_map[r_name] = local_plugin
+                            plugin_map[r_name] = local_plugin
                 else:
                     print(f"  -> Skipping URL: Content is not a standard JSON list.")
         except Exception as e:
