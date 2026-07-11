@@ -40,3 +40,8 @@
 [CHANGELOG] UPDATED: CineStream metadata sync. version(466 -> 468), size(717850 -> 721008), hash(sha256-6759c6416d390fe996b823ca34b249e9df160a5ac96d16f30681ee34e4989977 -> sha256-87fcd3afda71e2bc5db57a6ea1a1495a26d363ff04942edb32eb805fba9d6bd3)
 [SUCCESS] Sync complete. Applied modifications to 1 items.
 
+--- Run executed at 2026-07-11 10:36:20 ---
+[CHANGELOG] UPDATED: StreamPlay metadata sync. version(654 -> 654), size(952931 -> 954174), hash(sha256-86d3618e96182e4203faa8ddabfc2aab4495de674d9c0863ecbcb0f8986aa112 -> sha256-d6e72c9c6ecc6eebee12d8f3982659c41e18f817d63848b34ac0ee6927ff52b3)
+[CHANGELOG] UPDATED: Ultima metadata sync. version(56 -> 56), size(243889 -> 245776), hash(sha256-f63d1ecbc6ab2f65983ad34b0ff081c085dec969f908e96198dc4398fc58b552 -> sha256-ff3dc4d7bc397d33573284434af723c28d585b810a3cd496260e16a9f7442245)
+[SUCCESS] Sync complete. Applied modifications to 2 items.
+
