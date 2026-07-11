@@ -51,3 +51,7 @@
 --- Run executed at 2026-07-11 16:12:38 ---
 [INFO] No plugin version upgrades detected. Everything is up to date.
 
+--- Run executed at 2026-07-11 19:35:12 ---
+[CHANGELOG] UPDATED: Ultima metadata sync. version(56 -> 56), size(245776 -> 170852), hash(sha256-ff3dc4d7bc397d33573284434af723c28d585b810a3cd496260e16a9f7442245 -> sha256-a8c89c395f6631b8156a8a4510cadb057c0a78d7ed3a25fb28d08743def1aa33)
+[SUCCESS] Sync complete. Applied modifications to 1 items.
+
