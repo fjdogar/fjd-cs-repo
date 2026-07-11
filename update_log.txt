@@ -36,3 +36,7 @@
 --- Run executed at 2026-07-11 05:55:39 ---
 [INFO] No plugin version upgrades detected. Everything is up to date.
 
+--- Run executed at 2026-07-11 08:16:16 ---
+[CHANGELOG] UPDATED: CineStream metadata sync. version(466 -> 468), size(717850 -> 721008), hash(sha256-6759c6416d390fe996b823ca34b249e9df160a5ac96d16f30681ee34e4989977 -> sha256-87fcd3afda71e2bc5db57a6ea1a1495a26d363ff04942edb32eb805fba9d6bd3)
+[SUCCESS] Sync complete. Applied modifications to 1 items.
+
